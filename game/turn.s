@@ -3,6 +3,7 @@
 .global switch_player
 .type switch_player, %function
 
+
 switch_player:
     ldr x1, =current_player
     ldr w2, [x1]

@@ -3,15 +3,21 @@
 .type toss_up, %function
 
 toss_up:
-    ldr x1, =toss_winner 
+    // Store return address in stack
+    stp x29, x30, [sp, #-16]!
+    mov x29, sp
 
-    // Step 1: Generate a random number
+    // Generate a random number
+    bl rand
     
-    // Step 2: Convert result to 1 or 2
+    // Convert result to 1 or 2
+    and w0, w0, #1
+    add w0, w0, #1
 
-    // Step 3: Load address of toss_winner
+    // Store random number
+    ldr x1, =toss_winner 
+    str w0, [x1]
 
-    // Step 4: Store w0 into toss_winner
+    ldp x29, x30, [sp], #16
 
-    // Step 5: Return
     ret
