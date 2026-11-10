@@ -21,6 +21,14 @@ start_game:
     ldr x2, =current_player
     str w0, [x2]
 
+    // player symbols
+    ldr x3, =player1_symbol
+    mov w4, #1
+    str w4, [x3]
+    ldr x3, =player2_symbol
+    mov w4, #-1
+    str w4, [x3]
+
 
     ldp x29, x30, [sp], #16
     ret 
