@@ -85,5 +85,51 @@ loop_done:
 .type place_mark, %function
 
 place_mark:
-    
+    // 0 <= i <= 8
+    cmp w0, #8
+    b.gt invalid_move
+    cmp w0, #0
+    b.lt invalid_move
+
+    // checks if board[i] == 0
+    ldr x1, =board
+    add x2, x1, w0, UXTW #2
+    ldr w3, [x2]
+    cmp w3, #0
+    b.ne invalid_move
+
+    // loads current player 
+    ldr x4, =current_player
+    ldr w5, [x4]
+
+    cmp w5, #1
+    b.eq player_one
+    b player_two
+
+
+player_one:
+    ldr x8, =player1_symbol
+    ldr w9, [x8]
+    b store_mark
+
+player_two:
+    ldr x8, =player2_symbol
+    ldr w9, [x8]
+    b store_mark
+
+store_mark:
+    str w9, [x2]
+
+    // increament moves played and sets w0 = 1 for successful move
+    ldr x6, =moves_played
+    ldr w7, [x6]
+    add w7, w7, #1
+    str w7, [x6]
+
+    mov w0, #1
+
     ret
+
+invalid_move:
+    mov w0, #0
+    ret 
