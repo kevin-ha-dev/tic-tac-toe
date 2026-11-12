@@ -1,6 +1,5 @@
-.section .text
+.text
 .global toss_up
-.type toss_up, %function
 
 toss_up:
     // Store return address in stack
@@ -8,7 +7,7 @@ toss_up:
     mov x29, sp
 
     // Generate a random number
-    bl rand
+    bl _rand
     
     // Convert result to 1 or 2
     and w0, w0, #1

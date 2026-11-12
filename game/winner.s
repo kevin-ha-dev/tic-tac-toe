@@ -1,7 +1,6 @@
-.section .text
+.text
 
 .global check_winner
-.type check_winner, %function
 
 check_winner:
 

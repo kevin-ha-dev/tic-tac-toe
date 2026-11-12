@@ -1,7 +1,6 @@
-.section .text
+.text
 
 .global switch_player
-.type switch_player, %function
 
 
 switch_player:

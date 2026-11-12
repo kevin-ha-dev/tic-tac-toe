@@ -1,4 +1,4 @@
-.section .bss
+.bss
 .balign 4
 
 // Board (9 integers)

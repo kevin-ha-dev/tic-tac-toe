@@ -1,6 +1,5 @@
-.section .text
+.text
 .global clear_board
-.type clear_board, %function
 
 clear_board:
     ldr x1, =board
@@ -82,7 +81,6 @@ loop_done:
 
 
 .global place_mark
-.type place_mark, %function
 
 place_mark:
     // 0 <= i <= 8

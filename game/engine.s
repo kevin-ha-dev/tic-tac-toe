@@ -1,10 +1,8 @@
-.section .text
+.text
 
 .global start_game
-.type start_game, %function
 
 .global play_turn
-.type play_turn, %function
 
 start_game:
     stp x29, x30, [sp, #-16]!
